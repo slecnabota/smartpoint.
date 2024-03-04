@@ -6,9 +6,11 @@ export default class RestApi {
         password: (old, password) => $app.api.patch(['auth/password',]).data({old, password,}),
         broadcast: () => $app.api.post(['auth/broadcast',]),
     }
-    store = {
-        product: () => $app.api.get(['store/products']),
-        conference: () => $app.api.get(['store/conferences'])
+    products = {
+        get: (id) => $app.api.get(['store/products*', id, ]),
+    }
+    conferences = {
+        get: (id) => $app.api.get(['store/conferences*', id, ])
     }
     // подключать апишки
 }

@@ -6,17 +6,17 @@
       <button class="conference__del delete">Удалить</button>
     </div>
     <div class="conference__content">
-      <cover-block :urlImage="conferenceImage"/>
+      <cover-block :urlImage="product?.avatar"/>
       <div class="conference__form">
         <div class="conference__section">
-          <form-input id="titleField" label="Название" :value="conferenceTitle"/>
-          <div class="conference__check">
-            <input type="checkbox" name="" id="">
+          <form-input id="titleField" label="Название" :value="product?.title"/>
+          <div v-if="driver === 'conference'" class="conference__check">
+            <input type="checkbox" checked name="" id="">
             <span>Материнская категория</span>
           </div>
         </div>
-        <div class="conference__section conference__images">
-          <service-list/>
+        <div v-if="driver === 'conference'" class="conference__section conference__images">
+          <service-list :services="additionalItems"  />
         </div>
       </div>
     </div>
@@ -34,18 +34,48 @@ import conferenceImage from '@/assets/img/conference.png';
 
 export default {
   name: 'ConferencePage',
+  components: {ServiceList, NavBack, CoverBlock, formInput},
   data() {
     return {
       login: "+71231231231",
       password: "123123",
+      product: {},
+      additionalItems: [],
       conferenceImage,
       conferenceTitle: "Конференц залы",
       photos: [],
       conferences: [],
     }
   },
-  components: {ServiceList, NavBack, CoverBlock, formInput},
+  computed: {
+    id() {
+      return this.$route.params.id
+    },
+    driver() {
+      return this.$route.params.driver
+    },
+  },
+  created() {
+    this.fetchConferences();
+    this.loadProduct()
+
+    if (this.driver === 'conference') {
+      this.loadConferences()
+    }
+
+
+  },
   methods: {
+    loadProduct() {
+      $api.products.get(this.id).then((response) => {
+        this.product = response.data.content
+      })
+    },
+    loadConferences() {
+      $api.conferences.get().then((response) => {
+        this.additionalItems = response.data.content
+      })
+    },
     getLink() {
       const pagesStore = useMainStore();
       const currentPage = pagesStore.booking.find(page => page.name === this.$route.name);
@@ -61,9 +91,6 @@ export default {
       }
     },
   },
-  created() {
-    this.fetchConferences();
-  }
 }
 </script>
 <style scoped lang="scss">

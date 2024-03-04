@@ -30,9 +30,9 @@ const routes = [
                     {path: '', name: "booking", component: BookingPage, meta: {requiresAuth: true}},
                     {path: "coworking", name: 'coworking', component: CoworkingPage, meta: {requiresAuth: true}},
                     {
-                        path: "conference",
+                        path: "item-page/:id/:driver",
                         children: [
-                            {path: '', name: 'conference', component: ConferencePage, meta: {requiresAuth: true}},
+                            {path: '', name: 'item-page', component: ConferencePage, meta: {requiresAuth: true}},
                             {path: "add", name: 'add', component: ServiceForm, meta: {requiresAuth: true}},
                             {path: "edit/:id", name: 'edit', component: ServiceForm, meta: {requiresAuth: true}}
                         ]

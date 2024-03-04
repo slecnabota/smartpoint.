@@ -2,8 +2,10 @@
   <div class="booking">
     <h2 class="booking__title">Бронирование</h2>
     <div class="booking__wrapper">
-      <router-link v-for="(card, index) in pages.booking" :to="{name : card.to}" :key="index" class="booking__card">
-        <card-block :img="card.image" :heading="card.heading"></card-block>
+      <router-link v-for="(card, index) in data"
+                   :to="{name: 'item-page', params:{id: card.id, driver: card.driver || 'none'}}" :key="index"
+                   class="booking__card">
+        <card-block :img="card.avatar" :heading="card.title"></card-block>
       </router-link>
     </div>
   </div>
@@ -20,7 +22,20 @@ export default {
   name: 'BookingPage',
   components: {CardBlock},
   data() {
-    return {}
+    return {
+      data: [],
+    }
+  },
+  created() {
+    this.loadData()
+  },
+  methods: {
+    loadData() {
+      this.data = []
+      $api.products.get().then((response) => {
+        this.data = response.data.content
+      })
+    },
   }
 }
 </script>

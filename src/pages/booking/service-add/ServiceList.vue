@@ -4,7 +4,7 @@
     <div class="service__wrapper">
       <div class="service__inner" v-for="(service, index) in services" :key="index">
         <router-link :to="`conference/edit/${index}`" class="service__card">
-          <div class="service__image" :style="{ backgroundImage: 'url(' + service.image + ')' }"></div>
+          <div class="service__image" :style="{ backgroundImage: 'url(' + service.avatar + ')' }"></div>
           <div class="service__name">{{ service.name }}</div>
         </router-link>
         <img src="@/assets/icons/photo_del.svg" alt="" class="service__delete">
@@ -18,11 +18,27 @@
   </div>
 </template>
 
-<script setup>
-import {useMainStore} from '@/store/index.js';
-
-const store = useMainStore();
-const services = store.services;
+<script>
+import NavBack from "@/components/ui/nav-back/Index.vue";
+import CoverBlock from "@/components/blocks/cover-block/CoverBlock.vue";
+import formInput from "@/components/ui/form-input/formInput.vue";
+export default {
+  name: 'ConferencePage',
+  components: {NavBack, CoverBlock, formInput},
+  props: {
+    services: {
+      type: Array,
+      required: true,
+    },
+    isCanAdd: {
+      type: Symbol(),
+      required: true,
+    },
+  },
+  data() {
+    return {}
+  },
+}
 </script>
 <style scoped lang="scss">
 .service {
