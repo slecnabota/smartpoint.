@@ -8,7 +8,6 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
 import {defineComponent} from 'vue';
 // import { mapState } from 'vuex';
 // import Auth from '../../../../libs/nast-auth/index';

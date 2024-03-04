@@ -4,7 +4,7 @@
   </div>
 </template>
 <script lang="ts">
-import LinksBlock from "@/components/blocks/aside/Links.vue";
+import LinksBlock from "./Links.vue";
 
 export default {
   name: 'AsideBlock',
