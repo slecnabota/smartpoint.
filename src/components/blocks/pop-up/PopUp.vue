@@ -94,7 +94,7 @@ export default defineComponent({
   }
 
   &__window {
-    background: $white;
+    background: var(--default-white);
     box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     min-width: 400px;

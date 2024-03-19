@@ -1,61 +1,58 @@
 <template>
-  <!--  <p class="user-mail">{{ user }}</p>-->
-  <p class="user-item">Подписка</p>
-  <p class="user-item">Смена пароля</p>
-  <form>
-    <button class="user-item exit" @click="logOut">Выход</button>
-  </form>
+  <div class="user">
+    <p class="user-mail">{{ data.email }}</p>
+    <router-link to="/profile" class="user-item">Профиль</router-link>
+    <button class="user-item user-exit" @click="logOut">Выход</button>
+  </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue';
-// import { mapState } from 'vuex';
-// import Auth from '../../../../libs/nast-auth/index';
+
 export default defineComponent({
   name: 'User',
+  data() {
+    return {
+      data: {},
+    }
+  },
+  created() {
+    this.userGet();
+  },
   methods: {
-    async logOut() {
+    userGet() {
+      $api.auth.info().then((response) => {
+        console.log(response.data.content.user)
+        this.data = response.data.content.user;
+      })
+    },
+    logOut() {
       $app.auth.logout();
     }
   }
-  // computed: {
-  //   ...mapState({
-  //     user: (state: any) => state.user.email
-  //   })
-  // },
-  // data() {
-  //   return {
-  //     auth: new Auth()
-  //   }
-  // }
 })
 </script>
 
 <style scoped lang="scss">
+@import '@/styles/mixins.scss';
+
 .user {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
   &-item {
-    border-radius: 10px;
     @include SemiBold15;
-    padding: 15px 10px;
-    transition: all .3s;
     cursor: pointer;
+  }
 
-    &:hover {
-      background: rgba(193, 193, 193, 0.329);
-    }
-
-    &.exit {
-      display: block;
-      width: 100%;
-      text-align: left;
-      border-radius: 10px;
-      @include SemiBold15;
-    }
+  &-exit {
+    text-align: left;
+    display: block;
+    @include SemiBold15;
   }
 
   &-mail {
-    padding: 20px 10px;
-    border-radius: 10px;
     @include SemiBold15;
     text-decoration-line: underline;
   }

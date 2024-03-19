@@ -36,12 +36,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '@/styles/mixins.scss';
+
 .input-field {
   & .label {
-    color: #0E1F4D;
-    font-size: 17px;
-    line-height: 27px;
-    font-family: 'SFProDisplay SemiBold';
+    color: var(--blue);
+    @include SemiBold17;
     display: block;
     margin-bottom: 15px;
 
@@ -52,17 +52,14 @@ export default {
   }
 
   .input {
-    background: #EFF0F4;
+    background: var(--gray-2);
     padding: 15px;
     border-radius: 10px;
     width: 100%;
     outline: none;
     border: none;
-    color: #0E1F4D;
-    font-family: 'SFProDisplay Regular';
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 22px;
+    color: var(--blue);
+    @include Body15;
   }
 }
 </style>

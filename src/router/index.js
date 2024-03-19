@@ -3,20 +3,17 @@ import {
     createRouter,
     createWebHistory,
 } from "vue-router";
+
 import LoginPage from "@/pages/auth/login/Index.vue";
 import BookingPage from "@/pages/booking/Index.vue";
-import RegisterPage from "@/pages/auth/register/Index.vue";
-import MainLayout from "@/layouts/main/Index.vue";
-import AuthMainPage from "@/layouts/auth/Index.vue";
-import ApplicationPage from '@/pages/application/Index.vue';
+import MainLayout from "@/layout/main/Index.vue";
+import AuthMainPage from "@/layout/auth/Index.vue";
 import UsersPage from '@/pages/users/Index.vue';
-import ResidentPage from '@/pages/resident1/Index.vue';
-import CoworkingPage from "@/pages/booking/CoworkingPage.vue";
-import OfficePage from "@/pages/booking/OfficePage.vue";
-import ConferencePage from "@/pages/booking/ConferencePage.vue";
-import LockerHall from "@/pages/booking/LockerHall.vue";
-import ServiceForm from "@/pages/booking/service-add/ServiceForm.vue";
+import ConferencePage from "@/pages/booking/ItemPage.vue";
 import AddUser from "@/pages/users/AddUser.vue";
+import ServiceEdit from "@/pages/booking/ServiceEdit.vue";
+import ServiceAdd from "@/pages/booking/ServiceAdd.vue";
+import Profile from '@/pages/profile/Profile.vue'
 
 const routes = [
     {
@@ -28,24 +25,15 @@ const routes = [
                 path: "booking",
                 children: [
                     {path: '', name: "booking", component: BookingPage, meta: {requiresAuth: true}},
-                    {path: "coworking", name: 'coworking', component: CoworkingPage, meta: {requiresAuth: true}},
                     {
                         path: "item-page/:id/:driver",
                         children: [
                             {path: '', name: 'item-page', component: ConferencePage, meta: {requiresAuth: true}},
-                            {path: "add", name: 'add', component: ServiceForm, meta: {requiresAuth: true}},
-                            {path: "edit/:id", name: 'edit', component: ServiceForm, meta: {requiresAuth: true}}
+                            {path: "add", name: 'add', component: ServiceAdd, meta: {requiresAuth: true}},
+                            {path: "edit/:id", name: 'edit', component: ServiceEdit, meta: {requiresAuth: true}}
                         ]
                     },
-                    {path: "office", name: 'office', component: OfficePage, meta: {requiresAuth: true}},
-                    {path: "lockerhall", name: 'lockerhall', component: LockerHall, meta: {requiresAuth: true}},
                 ]
-            },
-            {
-                path: "application",
-                name: "application",
-                component: ApplicationPage,
-                meta: {requiresAuth: true},
             },
             {
                 path: "users",
@@ -55,11 +43,11 @@ const routes = [
                 ]
             },
             {
-                path: "resident1",
-                name: "resident1",
-                component: ResidentPage,
-                meta: {requiresAuth: true},
-            },
+                path: "profile",
+                children: [
+                    {path: '', name: "profile", component: Profile, meta: {requiresAuth: true}},
+                ]
+            }
         ],
     },
     {
@@ -74,17 +62,6 @@ const routes = [
                         path: "",
                         name: "loginpage",
                         component: LoginPage,
-                        meta: {requiresAuth: false},
-                    },
-                ],
-            },
-            {
-                path: "registerpage",
-                children: [
-                    {
-                        path: "",
-                        name: "registerpage",
-                        component: RegisterPage,
                         meta: {requiresAuth: false},
                     },
                 ],

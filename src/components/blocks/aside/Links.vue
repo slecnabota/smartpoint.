@@ -134,6 +134,8 @@ export default {
 
 
 <style scoped lang="scss">
+@import '@/styles/mixins.scss';
+
 .links {
   padding: 25px 10px;
   display: flex;
@@ -141,12 +143,10 @@ export default {
   row-gap: 10px;
 
   &__element {
-    color: #0E1F4D;
+    color: var(--blue);
     padding: 10px;
     border-radius: 10px;
-    font-family: 'SFProDisplay SemiBold';
-    font-size: 15px;
-    line-height: 22px;
+    @include SemiBold15;
   }
 
   &__parent {
@@ -169,7 +169,7 @@ export default {
 
 .router-link-active-custom {
   .links__element {
-    background: $yellow2;
+    background: var(--yellow-2);
   }
 }
 
@@ -183,16 +183,16 @@ export default {
 
 .router-link-active {
   display: block;
-  background: $yellow;
+  background: var(--yellow);
   border-radius: 10px;
 
   .links__element {
-    color: $white;
+    color: var(--default-white);
   }
 }
 
 .active {
-  background: $yellow;
-  color: $white;
+  background: var(--yellow);
+  color: var(--default-white);
 }
 </style>

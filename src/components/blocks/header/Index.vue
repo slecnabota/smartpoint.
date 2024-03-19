@@ -59,15 +59,17 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+@import '@/styles/mixins.scss';
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   padding: 10px 10px;
-  background: $white;
+  background: var(--default-white);
   z-index: 5;
-  border-bottom: 1px solid $gray2;
+  border-bottom: 1px solid var(--gray-2);
 
   &__wrapper {
     display: grid;
@@ -85,7 +87,7 @@ export default {
   &__loop {
     display: flex;
     align-items: center;
-    background: $gray2;
+    background: var(--gray-2);
     padding: 10px 15px;
     column-gap: 10px;
     border-radius: 10px;
@@ -95,7 +97,6 @@ export default {
       background: transparent;
       border: none;
       width: 350px;
-      font-family: $fontRegular;
       outline: none;
     }
   }

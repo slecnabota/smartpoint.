@@ -12,7 +12,7 @@
 </template>
 <script>
 import {useMainStore} from '@/store/index.js';
-import CardBlock from "@/components/ui/card/Index.vue";
+import CardBlock from "@/components/blocks/card/Index.vue";
 
 export default {
   setup() {
@@ -41,7 +41,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .booking {
-  background: #F8F9FB;
+  background: var(--gray-1);
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -50,7 +50,7 @@ export default {
 
   &__title {
     padding-bottom: 15px;
-    border-bottom: 1px solid $gray2;
+    border-bottom: 1px solid var(--gray-2);
   }
 
   &__wrapper {

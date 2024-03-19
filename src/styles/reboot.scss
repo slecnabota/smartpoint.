@@ -1,0 +1,76 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+html {
+  height: 100%;
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--fz-default);
+  line-height: 1.5em;
+  font-family: var(--ff-default);
+
+  background-color: var(--default-white);
+  -webkit-tap-highlight-color: transparent;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  &.lock {
+    overflow: hidden;
+    padding-right: var(--paddingRight);
+  }
+}
+
+body {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  padding: var(--safe-area-top) var(--safe-area-right) var(--safe-area-bottom) var(--safe-area-left);
+
+  color: var(--blue);
+  background-color: var(--default-white);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  cursor: pointer;
+  appearance: none;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}

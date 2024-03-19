@@ -18,8 +18,8 @@ export default {
   left: 0;
   height: 100vh;
   width: 240px;
-  background: $white;
-  border-right: 1px solid $gray2;
+  background: var(--default-white);
+  border-right: 1px solid var(--gray-2);
   @media(max-width: 1110px) {
     width: 220px;
   }

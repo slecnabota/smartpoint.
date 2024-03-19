@@ -43,6 +43,8 @@ export default {
 
 
 <style scoped lang="scss">
+@import '@/styles/mixins.scss';
+
 .cover {
   padding: 20px 0 75px;
   margin-bottom: 10px;
@@ -59,13 +61,13 @@ export default {
   }
 
   &__update, &__delete {
-    color: $blue2;
+    color: var(--blue-2);
     font-size: 15px;
     @include SemiBold15;
   }
 
   &__delete {
-    color: $red;
+    color: var(--red);
   }
 
   &__image {
@@ -79,7 +81,7 @@ export default {
   }
 
   &__add {
-    background: $gray2;
+    background: var(--gray-2);
     border-radius: 15px;
     width: 320px;
     height: 200px;
@@ -88,7 +90,7 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 5px;
-    color: $gray4;
+    color: var(--gray-4);
     @include SemiBold13;
   }
 

@@ -66,6 +66,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '@/styles/mixins.scss';
+
 .tariff {
   background: #F8F9FB;
   padding: 20px;
@@ -98,7 +100,7 @@ export default {
   }
 
   &__delete {
-    color: $gray3;
+    color: var(--gray-3);
     @include SemiBold15;
   }
 
@@ -108,7 +110,7 @@ export default {
     gap: 10px;
 
     &-add {
-      color: $blue2;
+      color: var(--blue-2);
       @include SemiBold15;
       margin-top: 20px;
     }
